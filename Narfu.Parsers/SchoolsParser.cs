@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using HtmlAgilityPack;
+using Narfu.Common;
+using Narfu.Domain.Entities;
+
+namespace Narfu.Parsers
+{
+    public class SchoolsParser
+    {
+        private readonly HttpClient _client;
+
+        public SchoolsParser(HttpClient client = null)
+        {
+            _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
+        }
+
+        public async Task<IEnumerable<School>> GetSchools()
+        {
+            var response = await _client.GetAsync("/");
+            response.EnsureSuccessStatusCode();
+
+            var doc = new HtmlDocument();
+            doc.Load(await response.Content.ReadAsStreamAsync());
+
+            var schools = doc.DocumentNode
+                             .SelectNodes("//div[@id='classic']/div[contains(@class, 'institution_button')]/a")
+                             .Select(x => new School
+                             {
+                                 Id = int.Parse(x.Attributes["href"].Value.Split('=')[1]),
+                                 Url = $"{Constants.EndPoint}{x.Attributes["href"].Value}",
+                                 Name = x.InnerText.Trim()
+                             })
+                             .Distinct();
+
+            return schools;
+        }
+    }
+}

@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Narfu.Parsers;
 using Narfu.Schedule;
 
 namespace ExampleApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var teacherSchedule = new TeachersSchedule();
-            var teacherLessons = teacherSchedule.GetLessons(22914).GetAwaiter().GetResult();
+            var teacherLessons = await teacherSchedule.GetLessons(22914);
 
             var studentsSchedule = new StudentsSchedule();
-            var studentsLessons = studentsSchedule.GetLessons(9092).GetAwaiter().GetResult();
+            var studentsLessons = await studentsSchedule.GetLessons(9092);
+
+            var schoolsParser = new SchoolsParser();
+            var schools = await schoolsParser.GetSchools();
             Console.WriteLine("Hello World!");
         }
     }
