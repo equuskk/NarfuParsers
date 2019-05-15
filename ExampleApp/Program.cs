@@ -7,8 +7,11 @@ namespace ExampleApp
     {
         static void Main(string[] args)
         {
-            var schedule = new TeachersSchedule();
-            var lessons = schedule.GetLessons(22914).GetAwaiter().GetResult();
+            var teacherSchedule = new TeachersSchedule();
+            var teacherLessons = teacherSchedule.GetLessons(22914).GetAwaiter().GetResult();
+
+            var studentsSchedule = new StudentsSchedule();
+            var studentsLessons = studentsSchedule.GetLessons(9092).GetAwaiter().GetResult();
             Console.WriteLine("Hello World!");
         }
     }
