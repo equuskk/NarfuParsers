@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Narfu.Common;
 using Narfu.Parsers;
 using Narfu.Schedule;
 
@@ -20,6 +23,18 @@ namespace ExampleApp
 
             var groupsParser = new GroupsParser();
             var groups = await groupsParser.GetGroupsFromSchool(15);
+
+            var httpHandler = new HttpClientHandler()
+            {
+                Proxy = new WebProxy(new Uri("http://***.***.***.***:****"))
+            };
+            var httpClient = new HttpClient(httpHandler)
+            {
+                BaseAddress = new Uri(Constants.EndPoint)
+            };
+
+            var teachersParser = new TeachersParser(httpClient);
+            var teachers = await teachersParser.GetTeachersInRange(22913, 22917, 3, 1000);
             Console.WriteLine("Hello World!");
         }
     }
