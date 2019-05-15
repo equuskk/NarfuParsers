@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Narfu.Domain
+namespace Narfu.Parsers
 {
     public class Class1
     {
