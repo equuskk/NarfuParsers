@@ -17,6 +17,9 @@ namespace ExampleApp
 
             var schoolsParser = new SchoolsParser();
             var schools = await schoolsParser.GetSchools();
+
+            var groupsParser = new GroupsParser();
+            var groups = await groupsParser.GetGroupsFromSchool(15);
             Console.WriteLine("Hello World!");
         }
     }
