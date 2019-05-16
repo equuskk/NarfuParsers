@@ -18,6 +18,11 @@ namespace Narfu.Parsers
             _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
         }
 
+        /// <summary>
+        /// Получить перечисление высших школ
+        /// </summary>
+        /// <returns>Перечисление с высшими школами</returns>
+        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<School>> GetSchools()
         {
             var response = await _client.GetAsync("/");

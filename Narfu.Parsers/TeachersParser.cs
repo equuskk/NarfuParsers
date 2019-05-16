@@ -19,6 +19,15 @@ namespace Narfu.Parsers
             _client = client;
         }
 
+        /// <summary>
+        /// Получить перечисление преподавателей в указанном диапазоне
+        /// </summary>
+        /// <param name="startId">Начальный ID преподавателя</param>
+        /// <param name="endId">Конечный ID преподавателя</param>
+        /// <param name="sleepEvery">Через сколько запросов выполнять задержку</param>
+        /// <param name="sleepMs">Сколько милисекунд задержка</param>
+        /// <param name="proxy">Прокси</param>
+        /// <returns>Перечисление преподавателей в указанном диапазоне</returns>
         public async Task<IEnumerable<Teacher>> GetTeachersInRange(int startId, int endId,
                                                                    int sleepEvery, int sleepMs,
                                                                    WebProxy proxy = null)

@@ -19,9 +19,15 @@ namespace Narfu.Parsers
             _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
         }
 
-        public async Task<IEnumerable<Group>> GetGroupsFromSchool(int groupId)
+        /// <summary>
+        /// Получить список групп из указанной высшей школы
+        /// </summary>
+        /// <param name="schoolId">ID высшей школы</param>
+        /// <returns>Перечисления групп из ВШ</returns>
+        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
+        public async Task<IEnumerable<Group>> GetGroupsFromSchool(int schoolId)
         {
-            var response = await _client.GetAsync($"?groups&institution={groupId}");
+            var response = await _client.GetAsync($"?groups&institution={schoolId}");
             response.EnsureSuccessStatusCode();
 
             var doc = new HtmlDocument();

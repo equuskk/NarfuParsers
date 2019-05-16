@@ -18,6 +18,13 @@ namespace Narfu.Schedule
             _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
         }
 
+        /// <summary>
+        /// Получить перечисление с парами в указанной группе
+        /// </summary>
+        /// <param name="siteGroupId">ID группы на сайте</param>
+        /// <param name="from">Дата, с которой необходимо получить расписание</param>
+        /// <returns>Перечисление с парами</returns>
+        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Lesson>> GetLessons(int siteGroupId, DateTime from = default)
         {
             if(from == default(DateTime))
