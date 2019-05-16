@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using Narfu.Common;
 using Narfu.Domain.Entities;
 
 namespace Narfu.Parsers
@@ -20,7 +18,7 @@ namespace Narfu.Parsers
         }
 
         /// <summary>
-        /// Получить перечисление преподавателей в указанном диапазоне
+        ///     Получить перечисление преподавателей в указанном диапазоне
         /// </summary>
         /// <param name="startId">Начальный ID преподавателя</param>
         /// <param name="endId">Конечный ID преподавателя</param>

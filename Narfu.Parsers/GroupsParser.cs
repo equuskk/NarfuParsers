@@ -20,7 +20,7 @@ namespace Narfu.Parsers
         }
 
         /// <summary>
-        /// Получить список групп из указанной высшей школы
+        ///     Получить список групп из указанной высшей школы
         /// </summary>
         /// <param name="schoolId">ID высшей школы</param>
         /// <returns>Перечисления групп из ВШ</returns>

@@ -6,7 +6,7 @@ namespace Narfu.Common
     public class HttpClientBuilder
     {
         /// <summary>
-        /// Создает HttpClient с заданным timeout'ом и user agent'ом
+        ///     Создает HttpClient с заданным timeout'ом и user agent'ом
         /// </summary>
         /// <param name="timeout">Сколько ждать загрузки страницы</param>
         /// <param name="userAgent">User agent</param>

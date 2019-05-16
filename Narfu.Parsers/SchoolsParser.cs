@@ -19,7 +19,7 @@ namespace Narfu.Parsers
         }
 
         /// <summary>
-        /// Получить перечисление высших школ
+        ///     Получить перечисление высших школ
         /// </summary>
         /// <returns>Перечисление с высшими школами</returns>
         /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>

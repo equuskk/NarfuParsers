@@ -24,7 +24,7 @@ namespace ExampleApp
             var groupsParser = new GroupsParser();
             var groups = await groupsParser.GetGroupsFromSchool(15);
 
-            var httpHandler = new HttpClientHandler()
+            var httpHandler = new HttpClientHandler
             {
                 Proxy = new WebProxy(new Uri("http://***.***.***.***:****"))
             };

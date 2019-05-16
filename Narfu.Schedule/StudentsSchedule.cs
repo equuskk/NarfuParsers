@@ -19,7 +19,7 @@ namespace Narfu.Schedule
         }
 
         /// <summary>
-        /// Получить перечисление с парами в указанной группе
+        ///     Получить перечисление с парами в указанной группе
         /// </summary>
         /// <param name="siteGroupId">ID группы на сайте</param>
         /// <param name="from">Дата, с которой необходимо получить расписание</param>
@@ -27,7 +27,7 @@ namespace Narfu.Schedule
         /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Lesson>> GetLessons(int siteGroupId, DateTime from = default)
         {
-            if(from == default(DateTime))
+            if(from == default)
             {
                 from = DateTime.Today;
             }
