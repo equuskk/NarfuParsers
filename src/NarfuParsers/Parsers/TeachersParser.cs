@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Flurl.Http;
 using HtmlAgilityPack;
 using NarfuParsers.Common;
 using NarfuParsers.Entities;
@@ -12,11 +11,11 @@ namespace NarfuParsers.Parsers
 {
     public class TeachersParser
     {
-        private readonly HttpClient _client;
+        private readonly IFlurlRequest _client;
 
-        public TeachersParser(HttpClient client = null)
+        public TeachersParser(TimeSpan timeout)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
+            _client = FlurlClientBuilder.BuildClient(timeout);
         }
 
         /// <summary>
@@ -26,17 +25,19 @@ namespace NarfuParsers.Parsers
         /// <param name="endId">Конечный ID преподавателя</param>
         /// <param name="sleepEvery">Через сколько запросов выполнять задержку</param>
         /// <param name="sleepMs">Сколько милисекунд задержка</param>
-        /// <param name="proxy">Прокси</param>
         /// <returns>Перечисление преподавателей в указанном диапазоне</returns>
         public async Task<IEnumerable<Teacher>> GetTeachersInRange(int startId, int endId,
-                                                                   int sleepEvery, int sleepMs,
-                                                                   WebProxy proxy = null)
+                                                                   int sleepEvery, int sleepMs)
         {
             var teachers = new List<Teacher>();
             var c = 0;
             for(var i = startId; i < endId; i++)
             {
-                var response = await _client.GetAsync($"/?timetable&lecturer={i}");
+                var response = await _client
+                                     .SetQueryParam("timetable")
+                                     .SetQueryParam("lecturer", i)
+                                     .AllowAnyHttpStatus()
+                                     .GetAsync();
                 if(!response.IsSuccessStatusCode)
                 {
                     continue;

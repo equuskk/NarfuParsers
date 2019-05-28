@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
+using Flurl.Http;
 using HtmlAgilityPack;
 using NarfuParsers.Common;
 using NarfuParsers.Entities;
@@ -11,22 +11,21 @@ namespace NarfuParsers.Parsers
 {
     public class SchoolsParser
     {
-        private readonly HttpClient _client;
+        private readonly IFlurlRequest _client;
 
-        public SchoolsParser(HttpClient client = null)
+        public SchoolsParser(TimeSpan timeout)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
+            _client = FlurlClientBuilder.BuildClient(timeout);
         }
 
         /// <summary>
         ///     Получить перечисление высших школ
         /// </summary>
         /// <returns>Перечисление с высшими школами</returns>
-        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
+        /// <exception cref="FlurlHttpException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<School>> GetSchools()
         {
-            var response = await _client.GetAsync("/");
-            response.EnsureSuccessStatusCode();
+            var response = await _client.GetAsync();
 
             var doc = new HtmlDocument();
             doc.Load(await response.Content.ReadAsStreamAsync());

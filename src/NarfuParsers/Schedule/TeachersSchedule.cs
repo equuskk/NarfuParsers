@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Flurl.Http;
 using HtmlAgilityPack;
 using NarfuParsers.Common;
 using NarfuParsers.Entities;
@@ -13,11 +14,11 @@ namespace NarfuParsers.Schedule
 {
     public class TeachersSchedule
     {
-        private readonly HttpClient _client;
+        private readonly IFlurlRequest _client;
 
-        public TeachersSchedule(HttpClient client = null)
+        public TeachersSchedule(TimeSpan timeout)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
+            _client = FlurlClientBuilder.BuildClient(timeout);
         }
 
         /// <summary>
@@ -28,8 +29,10 @@ namespace NarfuParsers.Schedule
         /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Lesson>> GetLessons(int siteTeacherId)
         {
-            var response = await _client.GetAsync($"/?timetable&lecturer={siteTeacherId}");
-            response.EnsureSuccessStatusCode();
+            var response = await _client
+                                 .SetQueryParam("timetable")
+                                 .SetQueryParam("lecturer", siteTeacherId)
+                                 .GetAsync();
 
             var doc = new HtmlDocument();
             doc.Load(await response.Content.ReadAsStreamAsync());

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Flurl.Http;
 using HtmlAgilityPack;
 using NarfuParsers.Common;
 using Group = NarfuParsers.Entities.Group;
@@ -12,11 +12,11 @@ namespace NarfuParsers.Parsers
 {
     public class GroupsParser
     {
-        private readonly HttpClient _client;
+        private readonly IFlurlRequest _client;
 
-        public GroupsParser(HttpClient client = null)
+        public GroupsParser(TimeSpan timeout)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
+            _client = FlurlClientBuilder.BuildClient(timeout);
         }
 
         /// <summary>
@@ -24,11 +24,13 @@ namespace NarfuParsers.Parsers
         /// </summary>
         /// <param name="schoolId">ID высшей школы</param>
         /// <returns>Перечисления групп из ВШ</returns>
-        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
+        /// <exception cref="FlurlHttpException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Group>> GetGroupsFromSchool(int schoolId)
         {
-            var response = await _client.GetAsync($"?groups&institution={schoolId}");
-            response.EnsureSuccessStatusCode();
+            var response = await _client
+                                 .SetQueryParam("groups")
+                                 .SetQueryParam("institution", schoolId)
+                                 .GetAsync();
 
             var doc = new HtmlDocument();
             doc.Load(await response.Content.ReadAsStreamAsync());

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Flurl.Http;
 using Ical.Net;
 using NarfuParsers.Common;
 using NarfuParsers.Entities;
@@ -11,11 +12,11 @@ namespace NarfuParsers.Schedule
 {
     public class StudentsSchedule
     {
-        private readonly HttpClient _client;
+        private readonly IFlurlRequest _client;
 
-        public StudentsSchedule(HttpClient client = null)
+        public StudentsSchedule(TimeSpan timeout)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
+            _client = FlurlClientBuilder.BuildClient(timeout);
         }
 
         /// <summary>
@@ -32,8 +33,11 @@ namespace NarfuParsers.Schedule
                 from = DateTime.Today;
             }
 
-            var response = await _client.GetAsync($"/?icalendar&oid={siteGroupId}&from={from:dd.MM.yyyy}");
-            response.EnsureSuccessStatusCode();
+            var response = await _client
+                                 .SetQueryParam("icalendar")
+                                 .SetQueryParam("oid", siteGroupId)
+                                 .SetQueryParam("from", from.ToString("dd.MM.yyyy"))
+                                 .GetAsync();
 
             var calendar = Calendar.Load(await response.Content.ReadAsStreamAsync());
             var events = calendar.Events
