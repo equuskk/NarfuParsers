@@ -56,21 +56,21 @@ namespace NarfuParsers.Schedule
                                      .Split(new[] { ',' }, 2)[1]
                                      .Trim();
 
-                var adr = lessonNode.SelectSingleNode(".//span[@class='auditorium']")
+                var adr = lessonNode.SelectSingleNode(".//span[contains(@class,'auditorium')]")
                                     .GetNormalizedInnerText()
                                     .Split(new[] { ',' }, 2)
                                     .Select(x => x.Trim())
                                     .ToArray();
 
-                var time = lessonNode.SelectSingleNode(".//span[@class='time_para']")
+                var time = lessonNode.SelectSingleNode(".//span[contains(@class,'time_para')]")
                                      .GetNormalizedInnerText()
                                      .Split(new[] { '–' }, 2);
-
-                var groups = lessonNode.SelectSingleNode(".//span[@class='group']").GetNormalizedInnerText();
-                var number = byte.Parse(lessonNode.SelectSingleNode(".//span[@class='num_para']")
-                                                  .GetNormalizedInnerText());
-                var lessonName = lessonNode.SelectSingleNode(".//span[@class='discipline']").GetNormalizedInnerText();
-                var lessonType = lessonNode.SelectSingleNode(".//span[@class='kindOfWork']").GetNormalizedInnerText();
+                    
+                var groups = lessonNode.SelectSingleNode(".//span[contains(@class,'group')]").GetNormalizedInnerText();
+                var number = byte.Parse(lessonNode.SelectSingleNode(".//span[contains(@class,'num_para')]")
+                                                  .GetNormalizedInnerText()); 
+                var lessonName = lessonNode.SelectSingleNode(".//span[contains(@class,'discipline')]").GetNormalizedInnerText();
+                var lessonType = lessonNode.SelectSingleNode(".//span[contains(@class,'kindOfWork')]").GetNormalizedInnerText();
 
                 lessons.Add(new Lesson
                 {
