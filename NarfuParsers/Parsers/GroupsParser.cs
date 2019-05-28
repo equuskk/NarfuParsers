@@ -5,10 +5,10 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using Narfu.Common;
-using Group = Narfu.Domain.Entities.Group;
+using NarfuParsers.Common;
+using Group = NarfuParsers.Entities.Group;
 
-namespace Narfu.Parsers
+namespace NarfuParsers.Parsers
 {
     public class GroupsParser
     {

@@ -1,21 +1,14 @@
 ﻿using System;
 
-namespace Narfu.Domain.Entities
+namespace NarfuParsers.Entities
 {
-    public class Lesson : IEquatable<Lesson>
+    public class Group : IEquatable<Group>
     {
-        public string Type { get; set; }
+        public int RealId { get; set; }
+        public int SiteId { get; set; }
         public string Name { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
-        public string StartEndTime { get; set; }
-        public byte Number { get; set; }
-        public string Address { get; set; }
-        public string Auditory { get; set; }
-        public string Teacher { get; set; }
-        public string Groups { get; set; }
 
-        public bool Equals(Lesson other)
+        public bool Equals(Group other)
         {
             if(ReferenceEquals(null, other))
             {
@@ -27,7 +20,7 @@ namespace Narfu.Domain.Entities
                 return true;
             }
 
-            return string.Equals(Name, other.Name) && StartTime.Equals(other.StartTime);
+            return RealId == other.RealId && SiteId == other.SiteId;
         }
 
         public override bool Equals(object obj)
@@ -47,12 +40,12 @@ namespace Narfu.Domain.Entities
                 return false;
             }
 
-            return Equals((Lesson)obj);
+            return Equals((Group)obj);
         }
 
         public override int GetHashCode()
         {
-            return Name.GetHashCode() ^ StartTime.GetHashCode();
+            return RealId ^ SiteId;
         }
     }
 }

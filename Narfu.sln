@@ -3,15 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narfu.Domain", "Narfu.Domain\Narfu.Domain.csproj", "{AF56FAE0-D672-47D1-B484-371C7774233D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narfu.Schedule", "Narfu.Schedule\Narfu.Schedule.csproj", "{309D4D1B-194B-4949-958F-9AF71EF157FD}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narfu.Parsers", "Narfu.Parsers\Narfu.Parsers.csproj", "{3E106395-141F-4F24-A1C4-19ABCB6E3D7C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narfu.Common", "Narfu.Common\Narfu.Common.csproj", "{7780ADBC-1AE0-4184-9BAC-C672D2F5EC4A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleApp", "ExampleApp\ExampleApp.csproj", "{7E5CDF92-45DD-4BD5-BA40-A60263B874D9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NarfuParsers", "NarfuParsers\NarfuParsers.csproj", "{35D63529-7CEB-4D6F-A72A-B3D7B4D31BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,26 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AF56FAE0-D672-47D1-B484-371C7774233D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF56FAE0-D672-47D1-B484-371C7774233D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF56FAE0-D672-47D1-B484-371C7774233D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF56FAE0-D672-47D1-B484-371C7774233D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{309D4D1B-194B-4949-958F-9AF71EF157FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{309D4D1B-194B-4949-958F-9AF71EF157FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{309D4D1B-194B-4949-958F-9AF71EF157FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{309D4D1B-194B-4949-958F-9AF71EF157FD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3E106395-141F-4F24-A1C4-19ABCB6E3D7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E106395-141F-4F24-A1C4-19ABCB6E3D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E106395-141F-4F24-A1C4-19ABCB6E3D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E106395-141F-4F24-A1C4-19ABCB6E3D7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7780ADBC-1AE0-4184-9BAC-C672D2F5EC4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7780ADBC-1AE0-4184-9BAC-C672D2F5EC4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7780ADBC-1AE0-4184-9BAC-C672D2F5EC4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7780ADBC-1AE0-4184-9BAC-C672D2F5EC4A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E5CDF92-45DD-4BD5-BA40-A60263B874D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E5CDF92-45DD-4BD5-BA40-A60263B874D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E5CDF92-45DD-4BD5-BA40-A60263B874D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E5CDF92-45DD-4BD5-BA40-A60263B874D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D63529-7CEB-4D6F-A72A-B3D7B4D31BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D63529-7CEB-4D6F-A72A-B3D7B4D31BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D63529-7CEB-4D6F-A72A-B3D7B4D31BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D63529-7CEB-4D6F-A72A-B3D7B4D31BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

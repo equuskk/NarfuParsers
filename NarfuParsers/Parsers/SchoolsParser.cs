@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using Narfu.Common;
-using Narfu.Domain.Entities;
+using NarfuParsers.Common;
+using NarfuParsers.Entities;
 
-namespace Narfu.Parsers
+namespace NarfuParsers.Parsers
 {
     public class SchoolsParser
     {

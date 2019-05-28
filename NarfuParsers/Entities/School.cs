@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace Narfu.Domain.Entities
+namespace NarfuParsers.Entities
 {
-    public class Group : IEquatable<Group>
+    public class School : IEquatable<School>
     {
-        public int RealId { get; set; }
-        public int SiteId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
+        public string Url { get; set; }
 
-        public bool Equals(Group other)
+        public bool Equals(School other)
         {
             if(ReferenceEquals(null, other))
             {
@@ -20,7 +20,7 @@ namespace Narfu.Domain.Entities
                 return true;
             }
 
-            return RealId == other.RealId && SiteId == other.SiteId;
+            return Id == other.Id;
         }
 
         public override bool Equals(object obj)
@@ -40,12 +40,12 @@ namespace Narfu.Domain.Entities
                 return false;
             }
 
-            return Equals((Group)obj);
+            return Equals((School)obj);
         }
 
         public override int GetHashCode()
         {
-            return RealId ^ SiteId;
+            return Id;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using HtmlAgilityPack;
 
-namespace Narfu.Schedule
+namespace NarfuParsers.Extensions
 {
     internal static class HtmlNodeExtension
     {

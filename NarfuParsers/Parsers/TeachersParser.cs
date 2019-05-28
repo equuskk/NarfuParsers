@@ -4,9 +4,9 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using Narfu.Domain.Entities;
+using NarfuParsers.Entities;
 
-namespace Narfu.Parsers
+namespace NarfuParsers.Parsers
 {
     public class TeachersParser
     {

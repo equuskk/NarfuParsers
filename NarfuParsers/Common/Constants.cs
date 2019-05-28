@@ -1,4 +1,4 @@
-﻿namespace Narfu.Common
+﻿namespace NarfuParsers.Common
 {
     public class Constants
     {

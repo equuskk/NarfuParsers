@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Ical.Net;
-using Narfu.Common;
-using Narfu.Domain.Entities;
+using NarfuParsers.Common;
+using NarfuParsers.Entities;
 
-namespace Narfu.Schedule
+namespace NarfuParsers.Schedule
 {
     public class StudentsSchedule
     {

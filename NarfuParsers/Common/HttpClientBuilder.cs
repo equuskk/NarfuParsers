@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace Narfu.Common
+namespace NarfuParsers.Common
 {
     public class HttpClientBuilder
     {

@@ -5,10 +5,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
-using Narfu.Common;
-using Narfu.Domain.Entities;
+using NarfuParsers.Common;
+using NarfuParsers.Entities;
+using NarfuParsers.Extensions;
 
-namespace Narfu.Schedule
+namespace NarfuParsers.Schedule
 {
     public class TeachersSchedule
     {
