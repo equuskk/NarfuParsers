@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.1</LangVersion>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Authors>equuskk</Authors>
+    <Description>Библиотека для получения расписания преподавателей и групп, а также списка высших школ и преподавателей</Description>
+    <PackageProjectUrl>https://github.com/equuskk/NarfuParsers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/equuskk/NarfuParsers</RepositoryUrl>
+    <RepositoryType>ClassLibrary</RepositoryType>
+    <PackageTags>narfu;safu;timetable;schedule;parser</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <Company>equuskk</Company>
+    <PrivateAssets>none</PrivateAssets>
+    <NeutralLanguage>ru</NeutralLanguage>
+    <PackageLicenseUrl>https://github.com/equuskk/NarfuParsers/LICENSE</PackageLicenseUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.4" />
+    <PackageReference Include="Ical.Net" Version="4.1.11" />
+  </ItemGroup>
+
+</Project>

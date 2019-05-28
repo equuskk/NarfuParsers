@@ -2,9 +2,9 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Narfu.Common;
-using Narfu.Parsers;
-using Narfu.Schedule;
+using NarfuParsers.Parsers;
+using NarfuParsers.Schedule;
+using NarfuParsers.Common;
 
 namespace ExampleApp
 {
@@ -35,7 +35,8 @@ namespace ExampleApp
 
             var teachersParser = new TeachersParser(httpClient);
             var teachers = await teachersParser.GetTeachersInRange(22913, 22917, 3, 1000);
-            Console.WriteLine("Hello World!");
+
+            Console.ReadLine();
         }
     }
 }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Ical.Net;
-using Narfu.Common;
-using Narfu.Domain.Entities;
+using NarfuParsers.Common;
+using NarfuParsers.Entities;
 
-namespace Narfu.Schedule
+namespace NarfuParsers.Schedule
 {
     public class StudentsSchedule
     {
@@ -15,7 +15,7 @@ namespace Narfu.Schedule
 
         public StudentsSchedule(HttpClient client = null)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
+            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
         }
 
         /// <summary>

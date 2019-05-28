@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace Narfu.Common
+namespace NarfuParsers.Common
 {
     public class HttpClientBuilder
     {
@@ -11,7 +11,7 @@ namespace Narfu.Common
         /// <param name="timeout">Сколько ждать загрузки страницы</param>
         /// <param name="userAgent">User agent</param>
         /// <returns>Сконфигурированный HttpClient для запросов к сайту</returns>
-        /// <exception cref="ArgumentException">Был передан некорретный user agent</exception>
+        /// <exception cref="ArgumentException">Передан некорретный user agent</exception>
         public static HttpClient BuildClient(TimeSpan timeout, string userAgent = null)
         {
             var client = new HttpClient
@@ -20,12 +20,10 @@ namespace Narfu.Common
                 Timeout = timeout
             };
 
-            if(userAgent != null && !string.IsNullOrWhiteSpace(userAgent))
+            userAgent = userAgent ?? Constants.DefaultUserAgent;
+            if(!client.DefaultRequestHeaders.UserAgent.TryParseAdd(userAgent))
             {
-                if(!client.DefaultRequestHeaders.UserAgent.TryParseAdd(userAgent))
-                {
-                    throw new ArgumentException("Invalid useragent", nameof(userAgent));
-                }
+                throw new ArgumentException("Invalid useragent", nameof(userAgent));
             }
 
             return client;

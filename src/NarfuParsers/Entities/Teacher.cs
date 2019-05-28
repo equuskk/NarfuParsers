@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Narfu.Domain.Entities
+namespace NarfuParsers.Entities
 {
     public class Teacher : IEquatable<Teacher>
     {
