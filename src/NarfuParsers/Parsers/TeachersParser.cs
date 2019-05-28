@@ -46,7 +46,7 @@ namespace NarfuParsers.Parsers
                 var doc = new HtmlDocument();
                 doc.Load(await response.Content.ReadAsStreamAsync());
 
-                var teacher = doc.DocumentNode.SelectSingleNode("//a[@class='navbar-brand']/span[2]").InnerText.Trim();
+                var teacher = doc.DocumentNode.SelectSingleNode("//a[@class='navbar-brand']/span[2]")?.InnerText?.Trim();
 
                 if(string.IsNullOrEmpty(teacher))
                 {
