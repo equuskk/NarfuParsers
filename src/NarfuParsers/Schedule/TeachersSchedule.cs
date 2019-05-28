@@ -17,7 +17,7 @@ namespace NarfuParsers.Schedule
 
         public TeachersSchedule(HttpClient client = null)
         {
-            _client = client ?? HttpClientBuilder.BuildClient(new TimeSpan(0, 0, 5));
+            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
         }
 
         /// <summary>

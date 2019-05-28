@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using NarfuParsers.Common;
 using NarfuParsers.Entities;
 
 namespace NarfuParsers.Parsers
@@ -14,7 +16,7 @@ namespace NarfuParsers.Parsers
 
         public TeachersParser(HttpClient client = null)
         {
-            _client = client;
+            _client = client ?? HttpClientBuilder.BuildClient(TimeSpan.FromSeconds(5));
         }
 
         /// <summary>
