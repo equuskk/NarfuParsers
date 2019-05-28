@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>7.1</LangVersion>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Authors>equuskk</Authors>
     <Description>Библиотека для получения расписания преподавателей и групп, а также списка высших школ и преподавателей</Description>
     <PackageProjectUrl>https://github.com/equuskk/NarfuParsers</PackageProjectUrl>
@@ -12,6 +12,7 @@
     <PackageTags>netstandard20,classlibrary,narfu,safu,timetable,schedule,parser</PackageTags>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <Company>equuskk</Company>
+    <PrivateAssets>none</PrivateAssets>
   </PropertyGroup>
 
   <ItemGroup>
