@@ -1,0 +1,31 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-16.04'
+
+variables:
+  buildConfiguration: 'Release'
+
+steps:
+- task: DotNetCoreInstaller@0
+  displayName: 'installing dotnet'
+  inputs:
+    version: '2.2.103'
+- task: DotNetCoreCLI@2
+  displayName: 'restoring packages'
+  inputs:
+    command: restore
+    projects: 'src/*.sln'
+- task: DotNetCoreCLI@2
+  displayName: 'building projects'
+  inputs:
+    command: build
+    projects: 'src/**/*.csproj'
+    arguments: '--configuration Release'
+- task: DotNetCoreCLI@2
+  displayName: 'running tests'
+  inputs:
+    command: test
+    projects: 'src/**/*Tests.csproj'
+    arguments: '--configuration $(buildConfiguration)'
