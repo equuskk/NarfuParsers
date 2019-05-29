@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="NarfuParsers" Version="1.0.0" />
+    <PackageReference Include="NarfuParsers" Version="1.1.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.1" />
   </ItemGroup>
 
