@@ -25,7 +25,7 @@ namespace NarfuParsers.Schedule
         /// <param name="siteGroupId">ID группы на сайте</param>
         /// <param name="from">Дата, с которой необходимо получить расписание</param>
         /// <returns>Перечисление с парами</returns>
-        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
+        /// <exception cref="FlurlHttpException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Lesson>> GetLessons(int siteGroupId, DateTime from = default)
         {
             if(from == default)
@@ -52,7 +52,7 @@ namespace NarfuParsers.Schedule
                 {
                     Address = address[0],
                     Auditory = address[1],
-                    Number = (byte)description[0].ElementAt(0),
+                    Number = int.Parse(description[0][0].ToString()),
                     Groups = description[1].Substring(3),
                     Name = description[2],
                     Type = description[3],
