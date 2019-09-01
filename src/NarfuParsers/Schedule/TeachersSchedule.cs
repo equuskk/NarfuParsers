@@ -26,7 +26,7 @@ namespace NarfuParsers.Schedule
         /// </summary>
         /// <param name="siteTeacherId">ID преподавателя на сайте</param>
         /// <returns>Перечисление с парами у указанного преподавателя</returns>
-        /// <exception cref="HttpRequestException">Выбрасывается, если сайт не вернул положительный Http код</exception>
+        /// <exception cref="FlurlHttpException">Выбрасывается, если сайт не вернул положительный Http код</exception>
         public async Task<IEnumerable<Lesson>> GetLessons(int siteTeacherId)
         {
             var response = await _client
