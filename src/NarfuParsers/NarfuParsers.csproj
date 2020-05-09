@@ -14,7 +14,7 @@
     <Company>equuskk</Company>
     <PrivateAssets>none</PrivateAssets>
     <NeutralLanguage>ru</NeutralLanguage>
-    <PackageLicense>https://github.com/equuskk/NarfuParsers/LICENSE</PackageLicense>
+    <PackageLicenseUrl>https://github.com/equuskk/NarfuParsers/LICENSE</PackageLicenseUrl>
     <Version>1.1.2</Version>
     <FileVersion>1.1.2.0</FileVersion>
   </PropertyGroup>
