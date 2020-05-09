@@ -35,7 +35,7 @@ namespace NarfuParsers.Parsers
                              .Select(x => new School
                              {
                                  Id = int.Parse(x.Attributes["href"].Value.Split('=')[1]),
-                                 Url = $"{Constants.EndPoint}{x.Attributes["href"].Value}",
+                                 Url = $"{Constants.EndPoint}/{x.Attributes["href"].Value.Replace("&amp;", "&")}",
                                  Name = x.InnerText.Trim()
                              })
                              .Distinct();

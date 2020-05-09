@@ -58,8 +58,8 @@ namespace NarfuParsers.Parsers
                 teachers.Add(new Teacher
                 {
                     Id = i,
-                    Name = teacherSplit[0],
-                    Depart = teacherSplit[1]
+                    Name = teacherSplit[0].Trim(),
+                    Depart = teacherSplit[1].Trim()
                 });
 
                 if(c++ % sleepEvery == 0)
