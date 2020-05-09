@@ -18,8 +18,8 @@ namespace NarfuParsers.Tests.Schedule
         public async Task GetSchedule_CorrectId_ReturnsLessons()
         {
             const int teacherId = 22222;
-            var correctStartDate = new DateTime(2019, 05, 14, 5, 20, 00);
-            var correctEndDate = new DateTime(2019, 05, 14, 6, 55, 00);
+            var correctStartDate = new DateTime(2019, 05, 14, 8, 20, 00);
+            var correctEndDate = new DateTime(2019, 05, 14, 9, 55, 00);
 
             var timeout = TimeSpan.FromSeconds(5);
             var service = new TeachersSchedule(timeout);
@@ -40,11 +40,11 @@ namespace NarfuParsers.Tests.Schedule
                       .HaveCount(48);
                 first.Address.Should().Be("наб. Северной Двины, д. 17");
                 first.Auditory.Should().Be("ауд. 1255");
-                first.EndTime.ToUniversalTime().Should().Be(correctEndDate);
+                first.EndTime.Should().Be(correctEndDate);
                 first.Groups.Should().Be("Группа \"301713\"");
                 first.Name.Should().Be("Физическая химия");
                 first.Number.Should().Be(1);
-                first.StartTime.ToUniversalTime().Should().Be(correctStartDate);
+                first.StartTime.Should().Be(correctStartDate);
                 first.Teacher.Should().Be("Богданов Михаил Владиславович. Кафедра теоретической и прикладной химии");
                 first.Type.Should().Be("Лабораторные занятия");
             }
