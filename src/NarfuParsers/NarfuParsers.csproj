@@ -14,15 +14,18 @@
     <Company>equuskk</Company>
     <PrivateAssets>none</PrivateAssets>
     <NeutralLanguage>ru</NeutralLanguage>
-    <PackageLicenseUrl>https://github.com/equuskk/NarfuParsers/LICENSE</PackageLicenseUrl>
+    <PackageLicense>https://github.com/equuskk/NarfuParsers/LICENSE</PackageLicense>
     <Version>1.1.1</Version>
     <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.4" />
-    <PackageReference Include="Ical.Net" Version="4.1.11" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ICalParser\ICalParser.csproj" />
   </ItemGroup>
 
 </Project>

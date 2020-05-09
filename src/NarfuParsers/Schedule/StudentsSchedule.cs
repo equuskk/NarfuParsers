@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
-using Ical.Net;
+using ICalParser.Models;
 using NarfuParsers.Common;
 using NarfuParsers.Entities;
 
@@ -39,10 +38,10 @@ namespace NarfuParsers.Schedule
                                  .SetQueryParam("from", from.ToString("dd.MM.yyyy"))
                                  .GetAsync();
 
-            var calendar = Calendar.Load(await response.Content.ReadAsStreamAsync());
+            var calendar = new Calendar(await response.Content.ReadAsStringAsync());
             var events = calendar.Events
                                  .Distinct()
-                                 .OrderBy(x => x.DtStart.Value);
+                                 .OrderBy(x => x.DtStart);
 
             var lessons = events.Select(ev =>
             {
@@ -57,8 +56,8 @@ namespace NarfuParsers.Schedule
                     Name = description[2],
                     Type = description[3],
                     Teacher = description[4],
-                    StartTime = ev.DtStart.AsSystemLocal,
-                    EndTime = ev.DtEnd.AsSystemLocal
+                    StartTime = ev.DtStart.ToLocalTime(),
+                    EndTime = ev.DtEnd.ToLocalTime()
                 };
             });
 

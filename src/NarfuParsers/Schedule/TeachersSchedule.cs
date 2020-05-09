@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Flurl.Http;
 using HtmlAgilityPack;
@@ -68,10 +67,10 @@ namespace NarfuParsers.Schedule
                 var time = lessonNode.SelectSingleNode(".//span[contains(@class,'time_para')]")
                                      .GetNormalizedInnerText()
                                      .Split(new[] { '–' }, 2);
-                    
+
                 var groups = lessonNode.SelectSingleNode(".//span[contains(@class,'group')]").GetNormalizedInnerText();
                 var number = byte.Parse(lessonNode.SelectSingleNode(".//span[contains(@class,'num_para')]")
-                                                  .GetNormalizedInnerText()); 
+                                                  .GetNormalizedInnerText());
                 var lessonName = lessonNode.SelectSingleNode(".//span[contains(@class,'discipline')]").GetNormalizedInnerText();
                 var lessonType = lessonNode.SelectSingleNode(".//span[contains(@class,'kindOfWork')]").GetNormalizedInnerText();
 

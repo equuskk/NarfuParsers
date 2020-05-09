@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NarfuParsers", "NarfuParser
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NarfuParsers.Tests", "NarfuParsers.Tests\NarfuParsers.Tests.csproj", "{BA981009-6DA3-4C20-8C48-85F5B8D6738C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICalParser", "ICalParser\ICalParser.csproj", "{052F12B8-44D6-45F7-BBD4-147798CE86CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{BA981009-6DA3-4C20-8C48-85F5B8D6738C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA981009-6DA3-4C20-8C48-85F5B8D6738C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA981009-6DA3-4C20-8C48-85F5B8D6738C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{052F12B8-44D6-45F7-BBD4-147798CE86CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{052F12B8-44D6-45F7-BBD4-147798CE86CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{052F12B8-44D6-45F7-BBD4-147798CE86CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{052F12B8-44D6-45F7-BBD4-147798CE86CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
