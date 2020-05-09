@@ -1,6 +1,9 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
+using FluentAssertions;
 using Flurl.Http;
 using Flurl.Http.Testing;
 using NarfuParsers.Common;
@@ -12,7 +15,7 @@ namespace NarfuParsers.Tests.Parsers
     public class GroupsParserTests
     {
         [Fact]
-        public async void GetGroupsFromSchool_CorrectSchoolId_ReturnsGroups()
+        public async Task GetGroupsFromSchool_CorrectSchoolId_ReturnsGroups()
         {
             const int schoolId = 3;
             var timeout = TimeSpan.FromSeconds(5);
@@ -20,9 +23,10 @@ namespace NarfuParsers.Tests.Parsers
 
             using(var httpTest = new HttpTest())
             {
-                httpTest.RespondWith(File.ReadAllText("TestData/Parsers/groups.html"));
+                httpTest.RespondWith(await File.ReadAllTextAsync("TestData/Parsers/groups.html"));
 
                 var result = await service.GetGroupsFromSchool(schoolId);
+                var first = result.First();
 
                 httpTest.ShouldHaveCalled(Constants.EndPoint)
                         .WithVerb(HttpMethod.Get)
@@ -30,12 +34,17 @@ namespace NarfuParsers.Tests.Parsers
                         .WithQueryParamValue("institution", schoolId)
                         .Times(1);
 
-                Assert.NotEmpty(result);
+                result.Should().NotBeEmpty().And
+                      .HaveCount(13);
+                first.Name.Should()
+                     .Be("Автоматизация технологических процессов и производств (Автоматизация систем управления производством)");
+                first.RealId.Should().Be(351810);
+                first.SiteId.Should().Be(9584);
             }
         }
-        
+
         [Fact]
-        public async void GetGroupsFromSchool_IncorrectSchoolId_ThrowsException()
+        public async Task GetGroupsFromSchool_IncorrectSchoolId_ThrowsException()
         {
             const int schoolId = 9999;
             var timeout = TimeSpan.FromSeconds(5);
@@ -43,10 +52,11 @@ namespace NarfuParsers.Tests.Parsers
 
             using(var httpTest = new HttpTest())
             {
-                httpTest.RespondWith("", 404);
+                httpTest.RespondWith(string.Empty, 404);
 
-                await Assert.ThrowsAsync<FlurlHttpException>(async () =>
-                                                                     await service.GetGroupsFromSchool(schoolId));
+                Func<Task> func = async () => await service.GetGroupsFromSchool(schoolId);
+
+                await func.Should().ThrowAsync<FlurlHttpException>();
 
                 httpTest.ShouldHaveCalled(Constants.EndPoint)
                         .WithVerb(HttpMethod.Get)
